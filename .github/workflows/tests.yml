@@ -1,8 +1,9 @@
 name: ci action
 
 on:
-  release:
-    types: [published]
+  pull_request: ~
+  push:
+    branches: ['*.*.x', 'master']
 
 jobs:
   build:
@@ -36,16 +37,3 @@ jobs:
           tags: |
             rosven9856/speedtestnet:${{ github.event.release.tag_name }}
             rosven9856/speedtestnet:latest
-
-      - name: Send message in telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            Github. Creating new release speedtestnet
-
-            Repository: ${{ github.repository }}
-            Release: ${{ github.event.release.tag_name }}
-
-            See details: https://github.com/${{ github.repository }}/releases
