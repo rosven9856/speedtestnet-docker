@@ -1,0 +1,7 @@
+services:
+  speedtestnet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UBUNTU_VERSION: ${UBUNTU_VERSION}
