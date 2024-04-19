@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           build-args: UBUNTU_VERSION=22.04
-          push: false
+          push: true
           tags: |
             rosven9856/speedtestnet:${{ github.event.release.tag_name }}
             rosven9856/speedtestnet:latest
